@@ -29,8 +29,6 @@ public class House implements Serializable {
     public String toString() {
         String result = String.format("Name: %s\nyear: %d\nnumberOfFlatsOnFloor:%d\n",
                 getName(), getYear(), getNumberOfFlatsOnFloor());
-//        if(getPostalAddress() == null) result += "Address: null";
-//        else result += String.format("Address: {Street: %s, ZipCode: %s}", getPostalAddress().getStreet(), getPostalAddress().getZipCode());
         return result;
     }
 }

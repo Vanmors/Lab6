@@ -49,10 +49,8 @@ public class ServerAccepter implements Runnable {
 
                     while (it.hasNext()) {
                         SelectionKey selKey = (SelectionKey) it.next();
-                        //if (ssChannel1.isOpen())
-//            it.remove();
+
                         ServerSocketChannel ssChannel = (ServerSocketChannel) selKey.channel();
-                        //new Thread(new FThread(selKey, ssChannel1, st)).start();
                         SocketChannel sChannel = ssChannel1.accept();
 
 
@@ -63,23 +61,6 @@ public class ServerAccepter implements Runnable {
                         ExecutorService executorService = Executors.newCachedThreadPool();
                         executorService.submit(new CachedThreadPoll(bufferRaed, sChannel, st));
 
-//
-//                    new Thread(new FThread(selKey, ssChannel1, st)).start();
-//
-//                    PasswordCheckDB passwordCheck = new PasswordCheckDB(bufferRaed);
-//                    String result = passwordCheck.passwordCheck();
-//                    if (result.equals("Entered") || result.equals("Incorrect password")) {
-//                        ByteBuffer bufferWrite;
-//                        //String OK = "Entered";
-//                        byte[] bs = result.getBytes(StandardCharsets.UTF_8);
-//                        bufferWrite = ByteBuffer.wrap(bs);
-//                        sChannel.write(bufferWrite);
-//                    } else if (result.equals("wasEntered")) {
-//                        ByteBuffer bufferWrite;
-//                        bufferWrite = handlerRequest.handelr(st, bufferRaed);
-//                        sChannel.write(bufferWrite);
-//                    }
-//                    sChannel.close();
                     }
                 }
             } catch (ClosedChannelException e) {

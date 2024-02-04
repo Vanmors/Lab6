@@ -32,13 +32,8 @@ public class Main {
         ParseDB parseDB = new ParseDB();
         parseDB.parse(st);
 
-        //serverDB.insertIntoTableServer();
-        //parseDB.parse();
-
         while(true) {
-            //args[0] = "asdfghjkl";
             new Thread(new ServerAccepter(st)).start();
-                //ServerAccepter.ServerConnect(st);
                 break;
             }
         }

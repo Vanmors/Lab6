@@ -1,13 +1,12 @@
 package com.company.Commands;
 
-import com.company.Stack.ProxyParse;
+
 import com.company.data.Flat;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.StreamCorruptedException;
-import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.Stack;
@@ -20,12 +19,6 @@ public class HandlerRequest {
 
             ICommand request = (ICommand) new ObjectInputStream(new ByteArrayInputStream(bufferRead.array())).readObject();
             System.out.println(request);
-
-//            if (request != null && count == 0) {
-//                ProxyParse pc = new ProxyParse(st, request);
-//                pc.parse(st);
-//                count = 1;
-//            }
 
             command = request.execute(st);
 

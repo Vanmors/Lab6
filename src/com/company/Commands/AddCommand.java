@@ -1,12 +1,5 @@
 package com.company.Commands;
 
-    /**
-     * добавляет элемент в коллекцию
-     *
-     * @param st объект коллекции Stack
-     */
-
-import com.company.Commands.ICommand;
 import com.company.Database.CollectionDB;
 import com.company.data.Flat;
 
