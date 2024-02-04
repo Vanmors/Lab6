@@ -1,17 +1,28 @@
 package com.company.Database;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.Properties;
 
 public class ServerDB {
-    public Connection getConnectionServer() {
+    public Connection getConnectionServer() throws IOException {
+        File file = new File("passwordDB.txt");
+        Properties properties = new Properties();
+        properties.load(new FileReader(file));
+        String loginDB = properties.getProperty("login");
+        String passwordDB = properties.getProperty("password");
+
         Connection c = null;
         try {
             Class.forName("org.postgresql.Driver");
             c = DriverManager
-                    .getConnection("jdbc:postgresql://pg:5432/studs",
-                            "s333887", "nav461");
+                    .getConnection("jdbc:postgresql://localhost:5432/postgres",
+                            loginDB, passwordDB);
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
